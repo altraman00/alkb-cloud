@@ -1,0 +1,28 @@
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: utf-8
+
+spring:
+  profiles:
+    active: local
+  #当前服务名称
+  application:
+    name: app-user-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/alkb-cloud?useUnicode=true&useSSL=false
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+
+# 指定当前eureka客户端的注册地址,
+eureka:
+  client:
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:8700/eureka
+  instance:
+    hostname: localhost
+
+
