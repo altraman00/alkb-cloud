@@ -1,6 +1,6 @@
 package com.mdl.alkb.server.user.controller;
 
-import com.mdl.alkb.server.user.client.ServiceFeignClient;
+import com.mdl.alkb.server.user.client.OrderServiceFeignClient;
 import com.mdl.alkb.server.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
@@ -37,13 +38,13 @@ public class UserController {
   private RestTemplate restTemplate;
 
   @Autowired
-  private ServiceFeignClient serviceFeignClient;
+  private OrderServiceFeignClient orderServiceFeignClient;
 
 
   @ApiOperation(value = "根据id查询")
-  @GetMapping("/name")
-  public String getUserById(String id) {
-    String byId = userService.findById(id);
+  @GetMapping("/{userId}")
+  public String getUserById(@PathVariable("userId") String userId) {
+    String byId = userService.findById(userId);
     return byId;
   }
 
@@ -91,7 +92,7 @@ public class UserController {
   public String getUserOrderByUserId4(String userId) {
     //第四种调用方式
     //使用feignClient的方式
-    String forObject = serviceFeignClient.getUserOrderByUserId(userId);
+    String forObject = orderServiceFeignClient.getUserOrderByUserId(userId);
     return forObject;
   }
 

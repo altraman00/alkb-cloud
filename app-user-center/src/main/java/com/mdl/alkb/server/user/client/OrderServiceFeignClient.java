@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Component
 @FeignClient(value = "APP-ORDER-SERVICE")
-public interface ServiceFeignClient {
+public interface OrderServiceFeignClient {
 
-  @RequestMapping("/user/{userId}/order")
+  @RequestMapping("/order/user/{userId}")
   String getUserOrderByUserId(@PathVariable("userId") String userId);
 
 }

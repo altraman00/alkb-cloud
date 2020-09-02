@@ -23,6 +23,11 @@ public class BiUserOrderServiceImpl implements BiUserOrderService {
   private BiUserOrderRepository userOrderRepository;
 
   @Override
+  public BiUserOrderEntity findById(String id) {
+    return userOrderRepository.getOne(id);
+  }
+
+  @Override
   public List<BiUserOrderEntity> findByUserId(String userId) {
     return userOrderRepository.findByUserId(userId);
   }

@@ -13,6 +13,8 @@ import java.util.List;
  */
 public interface BiUserOrderService {
 
+  BiUserOrderEntity findById(String id);
+
   List<BiUserOrderEntity> findByUserId(String userId);
 
 }
