@@ -44,8 +44,7 @@ public class UserController {
   @ApiOperation(value = "根据id查询")
   @GetMapping("/{userId}")
   public String getUserById(@PathVariable("userId") String userId) {
-    String byId = userService.findById(userId);
-    return byId;
+    return userService.findById(userId);
   }
 
   @ApiOperation(value = "第一种调用方式")

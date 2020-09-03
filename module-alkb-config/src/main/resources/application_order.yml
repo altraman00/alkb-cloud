@@ -11,7 +11,7 @@ spring:
     name: app-order-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/alkb-order?useUnicode=true&useSSL=false
+    url: jdbc:mysql://mb-air:3306/alkb-order?useUnicode=true&useSSL=false
     username: root
     password: 123456
   jpa:

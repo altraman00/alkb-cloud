@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Component
-@FeignClient(value = "APP-ORDER-SERVICE")
+@FeignClient(value = "APP-ORDER-SERVICE", fallback = ServiceFallBack.class)
 public interface OrderServiceFeignClient {
 
   @RequestMapping("/order/user/{userId}")

@@ -11,7 +11,7 @@ spring:
     name: app-user-service
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/alkb-cloud?useUnicode=true&useSSL=false
+    url: jdbc:mysql://mb-air:3306/alkb-cloud?useUnicode=true&useSSL=false
     username: root
     password: 123456
   jpa:
@@ -24,5 +24,9 @@ eureka:
       defaultZone: http://${eureka.instance.hostname}:8700/eureka
   instance:
     hostname: localhost
+
+feign:
+  hystrix:
+    enabled: true
 
 
