@@ -4,6 +4,8 @@ import com.mdl.alkb.server.user.client.OrderServiceFeignClient;
 import com.mdl.alkb.server.user.service.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
@@ -27,13 +29,17 @@ import org.springframework.web.client.RestTemplate;
 @RequestMapping("user")
 public class UserController {
 
+  private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
   @Autowired
   private UserService userService;
 
   @Autowired
   private LoadBalancerClient loadBalancerClient;
 
-  /**需要添加RestTemplateConfig文件注入Restemplate**/
+  /**
+   * 需要添加RestTemplateConfig文件注入Restemplate
+   **/
   @Autowired
   private RestTemplate restTemplate;
 
@@ -86,6 +92,7 @@ public class UserController {
   @ApiOperation(value = "第四种调用方式")
   @GetMapping("/us4")
   public String getUserOrderByUserId4(String userId) {
+    logger.info("getUserOrderByUserId4,userId:{}",userId);
     //使用feignClient的方式
     return orderServiceFeignClient.getUserOrderByUserId(userId);
   }
