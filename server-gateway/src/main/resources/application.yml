@@ -17,7 +17,7 @@ spring:
   application:
     name: server-gateway
 
-zuul:ç
+zuul:
   routes:
     alikb-user:
       path: /us/**
