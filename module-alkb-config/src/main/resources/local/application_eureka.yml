@@ -15,5 +15,7 @@ eureka:
 
 #指定应用名称
 spring:
+  profiles:
+    active: local
   application:
     name: eureka-server
