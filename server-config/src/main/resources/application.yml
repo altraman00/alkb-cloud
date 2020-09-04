@@ -9,7 +9,7 @@ spring:
         git:
           uri: https://github.com/altraman00/alkb-cloud-config.git
           username: 869118563@qq.com
-          password: 173846952xk
+          password: xxxxxx
 
 # 指定当前eureka客户端的注册地址
 eureka:
