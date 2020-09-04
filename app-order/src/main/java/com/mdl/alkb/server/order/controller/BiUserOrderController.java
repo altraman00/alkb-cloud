@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,6 +28,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/order")
 public class BiUserOrderController {
 
+  @Value("${server.port}")
+  private String port;
+
   @Autowired
   private BiUserOrderService userOrderService;
 
@@ -37,6 +41,8 @@ public class BiUserOrderController {
   @GetMapping("/user/{userId}")
   public List<BiUserOrderEntity> getOrderListByUserId(@PathVariable("userId") String userId) {
     List<BiUserOrderEntity> byUserId = userOrderService.findByUserId(userId);
+    System.out.println("server.port:" + port);
+    byUserId.stream().forEach(t -> t.setName(t.getName()+"port:"+port));
     return byUserId;
   }
 

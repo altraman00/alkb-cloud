@@ -50,7 +50,6 @@ public class UserController {
   @ApiOperation(value = "第一种调用方式")
   @GetMapping("/us1")
   public String getUserOrderByUserId(String userId) {
-    //第一种调用方式
     String forObject = new RestTemplate()
         .getForObject("http://localhost:8081/user/" + userId + "/order", String.class);
 
@@ -60,7 +59,6 @@ public class UserController {
   @ApiOperation(value = "第二种调用方式")
   @GetMapping("/us2")
   public String getUserOrderByUserId2(String userId) {
-    //第二种调用方式
     //根据服务名 获取服务列表 根据算法选取某个服务 并访问某个服务的网络位置
     ServiceInstance serviceInstance = loadBalancerClient.choose("APP-ORDER-SERVICE");
     String forObject = new RestTemplate()
@@ -75,7 +73,6 @@ public class UserController {
   @ApiOperation(value = "第三种调用方式")
   @GetMapping("/us3")
   public String getUserOrderByUserId3(String userId) {
-    //第三种调用方式
     //用到restTemplate注入的方式
     ServiceInstance serviceInstance = loadBalancerClient.choose("APP-ORDER-SERVICE");
     String forObject = restTemplate.getForObject(
@@ -89,10 +86,8 @@ public class UserController {
   @ApiOperation(value = "第四种调用方式")
   @GetMapping("/us4")
   public String getUserOrderByUserId4(String userId) {
-    //第四种调用方式
     //使用feignClient的方式
-    String forObject = orderServiceFeignClient.getUserOrderByUserId(userId);
-    return forObject;
+    return orderServiceFeignClient.getUserOrderByUserId(userId);
   }
 
 

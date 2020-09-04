@@ -28,8 +28,7 @@ public class BiDefOrderController {
   @ApiOperation(value = "根据id查询")
   @GetMapping("/id")
   public String bridgeInfo(String id) {
-    String byId = orderService.findById(id);
-    return byId;
+    return orderService.findById(id);
 
   }
 
