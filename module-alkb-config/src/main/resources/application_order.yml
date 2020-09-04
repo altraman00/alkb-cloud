@@ -18,7 +18,7 @@ spring:
     show-sql: true
 
 
-# 指定当前eureka客户端的注册地址,
+# 指定当前eureka客户端的注册地址
 eureka:
   client:
     service-url:
